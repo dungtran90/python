@@ -12,5 +12,5 @@ print tong
 
 
 import math
-print sum(int(digit) for digit in str(math.factorial(100)))
+print sum(int(number) for number in str(math.factorial(100)))
     
