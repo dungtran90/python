@@ -1,0 +1,49 @@
+
+def empty_matrix(m,n):
+    matrix=[]
+    matrix=[[0 for row in range(m)] for col in range(n)] 
+    return matrix
+matrix =empty_matrix(20,20)
+fin = open('matrix.txt')
+li=[]
+i=0
+for line in fin:
+    word = line.strip()
+    a= word.split(' ')
+    for j in range(len(a)):
+        matrix[i][j]=a[j]
+    i+=1
+print matrix
+
+list=[]
+max=0
+for i in range(17):
+    for j in range(17):
+        b=int(matrix[i][j])*int(matrix[i][j+1])*int(matrix[i][j+2])*int(matrix[i][j+3])
+        if max < b:
+            max=b
+print max
+for i in range(17):
+    for j in range(17):
+        b=int(matrix[j][i])*int(matrix[j+1][i])*int(matrix[j+2][i])*int(matrix[j+3][i])
+        if max<b:
+            max=b
+print max
+for i in range(17):
+    for j in range(17):
+        b=int(matrix[i][j])*int(matrix[i+1][j+1])*int(matrix[i+2][j+2])*int(matrix[i+3][j+3])
+        if max<b:
+            max=b
+print max
+for i in range(3,20):
+    for j in range(3,20):
+        b=int(matrix[i][j])*int(matrix[i-1][j-1])*int(matrix[i-2][j-2])*int(matrix[i-3][j-3])
+        if max<b:
+            max=b
+for i in range(17):
+    for j in range(3,20):
+        b=int(matrix[i][j])*int(matrix[i+1][j-1])*int(matrix[i+2][j-2])*int(matrix[i+3][j-3])
+        if max<b:
+            max=b
+print max
+

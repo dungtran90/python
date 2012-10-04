@@ -1,0 +1,107 @@
+#bai nay lam vo van qua :D. khi nao lam lai :D
+ones = {1:"one",2:"two",3:"three",4:"four",5:"five",6:"six",7:"seven",8:"eight",9:"nine"}
+tens = {10:"ten",11:"eleven",12:"twelve",13:"thirteen",14:"fourteen",15:"fifteen",16:"sixteen",17:"seventeen",18:"eighteen",
+19:"nineteen"}
+twenties = {20:"twenty",30:"thirty",40:"forty",50:"fifty",60:"sixty",70:"seventy",80:"eighty",90:"ninety"}
+thousands = {100:"hundred"}
+
+def convert(number):
+    if number == 1000:
+        number = 'onethousand'
+    if number == 100:
+        number = 'onehundred'
+    if number == 200:
+        number = 'twohundred'
+    if number == 300:
+        number = 'threehundred'
+    if number == 400:
+        number = 'fourhundred'
+    if number == 500:
+        number = 'fivehundred'
+    if number == 600:
+        number = 'sixhundred'
+    if number == 700:
+        number = 'sevenhundred'
+    if number == 800:
+        number = 'eighthundred'    
+    if number == 900:
+        number = 'ninehundred'
+        
+    elif len(str(number)) == 1:
+        for key in ones.keys():
+            if number == key:
+                number = ones[key]
+    
+    elif len(str(number))== 2 and number < 20:
+        for key in tens.keys():
+            if number == key:
+                number = tens[key]
+    elif len(str(number)) == 2 and number >=20:
+        hang_chuc = int(number/10)
+        hang_donvi = number%10  
+        
+        for key in ones.keys():
+            if hang_donvi == key:
+                hang_donvi = ones[key]
+        for key in twenties.keys():
+            if hang_chuc * 10 == key:
+                hang_chuc = twenties[key]
+        if hang_donvi == 0:
+            number = str(hang_chuc)
+        else:
+            number = str(hang_chuc)+ str(hang_donvi)
+    elif len(str(number)) == 3:
+        
+        hang_tram= int(number/100)
+        chuc_donvi = int(number%100)
+        
+        hang_chuc = int(chuc_donvi/10)
+        hang_donvi = int(chuc_donvi%10)
+        
+        for key in ones.keys():
+            if hang_tram == key:
+                hang_tram = str(ones[key])
+            else: pass
+        if chuc_donvi < 10:
+            for key in ones.keys():
+                if chuc_donvi == key:
+                    chuc_donvi = ones[key]
+                else: pass
+        
+            number = str(hang_tram)+"hundred"+"and"+str(chuc_donvi)
+        elif chuc_donvi >= 10 and chuc_donvi < 20:
+            for key in tens.keys():
+                if chuc_donvi == key:
+                    chuc_donvi = tens[key]
+            number = str(hang_tram)+"hundred"+"and"+str(chuc_donvi)
+            
+        else:
+            
+            if hang_chuc == 0 and hang_donvi!=0:
+                if hang_donvi!=0:
+                    for key in ones.keys():
+                        if hang_donvi == key:
+                            hang_donvi = ones[key]
+                        
+                    number = str(hang_tram)+"hundred"+"and"+str(hang_donvi)
+                if hang_donvi == 0:
+                    number = str(hang_tram)+ "hundred"
+                else: pass 
+            else:
+                
+                for key in twenties.keys():
+                    if hang_chuc * 10 == key:
+                        hang_chuc = twenties[key]
+                
+                for key in ones.keys():
+                    if hang_donvi == key:
+                        hang_donvi = ones[key]
+                
+                if hang_donvi !=0:
+                    chuc_donvi = str(hang_chuc)+ str(hang_donvi)
+                else:
+                    chuc_donvi = str(hang_chuc)
+                number = str(hang_tram) +"hundred" +"and"+str(chuc_donvi)
+        
+    return len(number)
+print sum(convert(number) for number in range(1,1001))

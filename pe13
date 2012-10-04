@@ -1,0 +1,12 @@
+words=open('pe13.txt')
+t=0
+for line in words:
+    word=line.strip()
+    t+=int(word)
+print t
+string = str(t)
+list=[]
+for i in range(10):
+    list.append(string[i])
+print "".join(list)
+    

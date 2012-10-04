@@ -1,0 +1,35 @@
+
+def tinh_ngay(li):
+    if li[0]==9 or li[0]==4 or li[0]==6 or li[0]==11:
+        return 30
+    
+    elif li[0] == 2: 
+        if li[1]%4==0 and li[1]% 400 !=0:
+            return 29
+        else:
+            return 28
+    
+    else:
+        return 31
+
+def cong_thang(li):
+    if li[0]<12:
+        li[0]+=1
+    else:
+        li[0] = 1
+        li[1]+=1
+    return li
+
+li=[1,1900]
+a,i = 0,0
+
+while li[1]<2001:
+    a= (a+tinh_ngay(li))%7
+    cong_thang(li)
+    if a==0 and li[1]>1900 and li[1]<2001:
+        
+        i+=1
+        
+print i
+    
+    

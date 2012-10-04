@@ -1,0 +1,6 @@
+for i in range(1,251):
+    for j in range(250,500):
+        if i*i+j*j-(1000-i-j)*(1000-i-j)==0:
+            print i,j
+            
+
