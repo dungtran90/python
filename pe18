@@ -21,4 +21,4 @@ def max_triangle(triangle):
 
     return triangle[0][0]
 
-print find_max(triangle('pe18.txt'))
+print max_triangle(triangle('pe18.txt'))
